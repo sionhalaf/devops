@@ -36,8 +36,11 @@ ls -l  /home/vagrant/.ssh/
 echo su vagrant -c "sshpass -p vagrant ssh-copy-id -i /home/vagrant/.ssh/id_rsa.pub vagrant@192.168.100.10"
 su vagrant -c "sshpass -p vagrant ssh-copy-id -i /home/vagrant/.ssh/id_rsa.pub vagrant@192.168.100.10"
 
-echo $?
-echo done sshpass
+echo su vagrant -c "scp vagrant@192.168.100.10:/home/vagrant/.ssh/id_rsa.pub /tmp/"
+su vagrant -c "scp vagrant@192.168.100.10:/home/vagrant/.ssh/id_rsa.pub /tmp/"
+echo su vagrant -c "cat /tmp/id_rsa.pub >> /home/vagrant/.ssh/authorized_keys"
+su vagrant -c "cat /tmp/id_rsa.pub >> /home/vagrant/.ssh/authorized_keys"
 
-#`echo su vagrant -c "ssh $REMOTE_HOST uptime"
-#su vagrant -c "ssh $REMOTE_HOST uptime"
+echo "test access server1 192.168.100.10"
+echo su vagrant -c "ssh server1 uptime"
+su vagrant -c "ssh server1 uptime"

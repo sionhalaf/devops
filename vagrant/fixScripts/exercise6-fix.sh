@@ -17,3 +17,4 @@ fi
 echo scp  "${@:1:($#-1)}"  "$HOST":${@: -1}
 scp  "${@:1:($#-1)}"  "$HOST":${@: -1}
 
+echo "the number of bytes is `stat --printf="%s" ${@:1:$#-1}`"
